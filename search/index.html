@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Search Autocomplete</title>
+    <!-- Included some basic styling, change at will -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.rawgit.com/prampcontent/3ea04cbd0f61a798e96afbe5d31ec2f9/raw/e879e32222b543b29a168daa089e2f9f28cf9eb2/autocomplete.css">
+</head>
+<body>
+<form class="search-form">
+    <input type="text" class="search-input" placeholder="Start typing a movie title...">
+    <ul class="results"></ul>
+</form>
+<!-- Helper code to provide a search API for mock data -->
+<script src="https://cdn.rawgit.com/prampcontent/180077452f9279073cab1035f60d30cf/raw/9cbf891a80bad9ad09c6261ef9578a65502922cc/search_helper.js"></script>
+<script>
+    /*-------------------------------
+    *
+    * Write your JavaScript code here.
+    *
+    * The mocked search data is available using the searchData async method, e.g:
+    *   searchData("QUERY").then(results => ...)
+    * [{title: "The Shawshank Redemption (1994)", rating: 9.2	},{title: "The Godfather (1972)", rating: 9.2	},{title: "The Godfather: Part II (1974)", rating: 9.0	}]
+    * ------------------------------*/
+    const searchInputElement = document.querySelector('.search-input');
+    const resultElements = document.querySelector('.results');
+
+    function searchValue(query){
+    searchData(query).then(results => {
+        const html = results.map(movie => `
+                                <li>
+                                <span>${movie.title}</span>
+                                <span>${movie.date}</span>
+                                </li>
+                                `)
+                                resultElements.innerHTML = html.join('');
+    })
+    }
+
+    function memoize(func) {
+            const cache = new Map();
+            return function(...args) {
+                // Use first argument as key
+                const key = args[0];
+                if (cache.has(key)) {
+                    console.log('cache hit');
+                    return cache.get(key);
+                }
+                console.log('cache miss');
+                const val = func.apply(this, arguments);
+                cache.set(key, val);
+                return val;
+            };
+        }
+
+        // Apply the memoization to the search results method
+        searchValue = memoize(searchValue);
+
+    // Adding this right after applying memoization
+        function debounce(fn, time) {
+            let timeout;
+            return function() {
+                const functionCall = () => {
+                    console.log('calling');
+                    return fn.apply(this, arguments);
+                };
+                clearTimeout(timeout);
+                timeout = setTimeout(functionCall, time);
+            }
+        }
+        
+        // Apply the debouncing to the search results method
+        searchValue = debounce(searchValue, 200);
+
+    function handleInput(){
+    return searchValue(this.value);
+    }
+
+    searchInputElement.addEventListener('change', handleInput);
+    searchInputElement.addEventListener('keyup', handleInput);
+    
+  
+</script>
+</body>
+</html>

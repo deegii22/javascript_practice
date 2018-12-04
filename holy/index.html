@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Hand Clock</title>
+    <style>
+        .HolyGrail {
+            display: flex;
+            min-height: 100vh;
+            flex-direction: column;
+        }
+
+        .HolyGrail-body {
+            display: flex;
+            flex: 1;
+            flex-direction: column;
+        }
+
+        .HolyGrail-content {
+            flex: 1;
+            background: yellow;
+        }
+
+        .HolyGrail-nav, .HolyGrail-ads {
+            /* 12em is the width of the columns */
+            flex: 0 0 12em;
+            background: green;
+        }
+
+        .HolyGrail-nav {
+            /* put the nav on the left */
+            order: -1;
+        }
+
+        @media (min-width: 768px) {
+        .HolyGrail-body {
+            flex-direction: row;
+            flex: 1;
+        }
+        }
+    </style>
+</head>
+<body class="HolyGrail">
+    <header>Header</header>
+    <div class="HolyGrail-body">
+        <main class="HolyGrail-content">Content</main>
+        <nav class="HolyGrail-nav">Menu</nav>
+        <aside class="HolyGrail-ads">Asd</aside>
+    </div>
+    <footer>Footer</footer>
+</body>
+</html>
+

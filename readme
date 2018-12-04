@@ -1,0 +1,43 @@
+A loop that picks events from the event queue and pushes their callbacks into the call stack
+
+DOM
+All HTML elements are represented in browser as objects
+all objects are nested together in one tree (DOM tree)
+Element can have parents, sublings and children
+
+Closure is first class function that binds to free variables that are defined in its execution environment
+combination of function
+A closure is a function that remembers its outer variables and can access them.
+A closure is the combination of a function and the lexical environment within which that function was declared. 
+In other words, a closure gives you access to an outer function’s scope from an inner function.
+
+
+Lexical Environment is the environment of the function where it is written. That is, the static order/place where it is situated, regardless from where it is called from.
+
+Scope of a variable/function is basically the locations from where a variable is visible/accessible.
+
+Execution context is the status of the execution stack at any point during runtime. That is the current execution context.
+
+A callback is a plain JavaScript function passed to some method as an argument or option. Some callbacks are just events, called to give the user a chance to react when a certain state is triggered.
+
+Synchronous programming means that, barring conditionals and function calls, code is executed sequentially from top-to-bottom, blocking on long-running tasks such as network requests and disk I/O.
+
+Asynchronous programming means that the engine runs in an event loop. When a blocking operation is needed, the request is started, and the code keeps running without blocking for the result. When the response is ready, an interrupt is fired, which causes an event handler to be run, where the control flow continues. In this way, a single program thread can handle many concurrent operations.
+
+Functional programming produces programs by composing mathematical functions and avoids shared state & mutable data
+
+Class Inheritance: instances inherit from classes. class keyword
+Prototypal Inheritance: instances inherit directly from other objects. Object.create()
+
+OOP Pros: It’s easy to understand the basic concept of objects and easy to interpret the meaning of method calls
+FP Pros: Using the functional paradigm, programmers avoid any shared state or side-effects, which eliminates bugs caused by multiple functions competing for the same resources.
+
+Two way data binding means that UI fields are bound to model data dynamically such that when a UI field changes, the model data changes with it and vice-versa.
+
+Layout: Browser will determine how much space each element takes up and where to place it.
+Painting: This is the process of filling in pixels. It involves drawing out elements.
+Compositing: Browser draws element to the screen in the correct order so the page renders correctly.
+
+this keyword always refers to the current context.
+
+A callback is a plain JavaScript function passed to some method as an argument or option. Some callbacks are just events, called to give the user a chance to react when a certain state is triggered.
